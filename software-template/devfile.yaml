@@ -21,10 +21,6 @@ components:
       env:
         - name: NODE_VERSION
           value: "18"
-  - name: roo-code
-    plugin:
-      id: RooCode.roo-code
-      # version: specify a version if needed
 commands:
   - id: open-vscode
     exec:
