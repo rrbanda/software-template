@@ -21,12 +21,3 @@ components:
       env:
         - name: NODE_VERSION
           value: "18"
-commands:
-  - id: open-vscode
-    exec:
-      component: universal-developer-image
-      commandLine: code .
-      workingDir: /projects
-      group:
-        kind: run
-        isDefault: true
