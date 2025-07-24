@@ -1,0 +1,36 @@
+schemaVersion: 2.2.0
+metadata:
+  name: backstage-software-template-dev
+attributes:
+  app.kubernetes.io/name: backstage-software-template
+components:
+  - name: universal-developer-image
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8:latest
+      memoryLimit: "2Gi"
+      cpuLimit: "2"
+      mountSources: true
+      volumeMounts:
+        - name: source
+          path: /projects
+      endpoints:
+        - name: web
+          targetPort: 8080
+        - name: app
+          targetPort: 3000
+      env:
+        - name: NODE_VERSION
+          value: "18"
+  - name: roo-code
+    plugin:
+      id: RooCode.roo-code
+      # version: specify a version if needed
+commands:
+  - id: open-vscode
+    exec:
+      component: universal-developer-image
+      commandLine: code .
+      workingDir: /projects
+      group:
+        kind: run
+        isDefault: true
